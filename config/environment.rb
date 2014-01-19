@@ -6,7 +6,6 @@ configure :development do
 end
 
 configure :production do
-  $stderr.puts "DATABASE URL: " + ENV['DATABASE_URL']
   db = URI.parse(ENV['DATABASE_URL'] || 'postgres://localhost/mydb')
 
   ActiveRecord::Base.establish_connection(
