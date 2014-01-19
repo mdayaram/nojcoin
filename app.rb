@@ -3,9 +3,10 @@
 require 'rubygems'
 require 'sinatra'
 require 'sinatra/activerecord'
-require './config/environment'
 require 'haml'
 require 'sass'
+require_relative './config/environment'
+require_relative './models/trade'
 
 configure do
   set :haml, { :format => :html5 }
@@ -16,5 +17,9 @@ get '/styles/:file.css' do
 end
 
 get '/' do
+  trade = Trade.order("created_at DESC").first
+  @owner = trade.to
+  @value = trade.offer
+  @notes = trade.notes
   haml :index
 end
