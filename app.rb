@@ -5,8 +5,8 @@ require 'sinatra'
 require 'haml'
 require 'sass'
 require_relative './config/environment'
-require_relative './models/trade'
 require 'sinatra/activerecord'
+require_relative './models/trade'
 
 configure do
   set :haml, { :format => :html5 }
