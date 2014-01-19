@@ -1,9 +1,5 @@
 #!/usr/bin/env ruby
 
-require 'rubygems'
-require 'bundler'
-Bundler.setup
-require 'sinatra'
 require_relative './config/environment'
 require_relative './models/trade'
 
