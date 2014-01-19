@@ -1,9 +1,11 @@
-require 'rubygems'
-require 'bundler'
-Bundler.setup
-require 'sinatra'
 require 'active_record'
 require 'sinatra/activerecord'
+require 'haml'
+require 'sass'
+
+configure do
+  set :haml, { :format => :html5 }
+end
 
 configure :development do
   set :database, 'sqlite:///db/dev.sqlite3'
