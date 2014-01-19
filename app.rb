@@ -3,7 +3,7 @@
 require 'rubygems'
 require 'sinatra'
 require 'sinatra/activerecord'
-require 'config/environment'
+require './config/environment'
 require 'haml'
 require 'sass'
 

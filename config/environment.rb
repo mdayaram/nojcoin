@@ -1,5 +1,5 @@
 configure :development do
-  set :database, 'sqlite:///nojcoin-dev.db'
+  set :database, 'sqlite:///db/dev.sqlite3'
   set :show_exceptions, true
 end
 
