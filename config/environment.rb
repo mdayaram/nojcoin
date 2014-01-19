@@ -1,4 +1,9 @@
+require 'rubygems'
+require 'bundler'
+Bundler.setup
+require 'sinatra'
 require 'active_record'
+require 'sinatra/activerecord'
 
 configure :development do
   set :database, 'sqlite:///db/dev.sqlite3'

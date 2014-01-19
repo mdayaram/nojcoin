@@ -1,11 +1,9 @@
 #!/usr/bin/env ruby
 
 require 'rubygems'
-require 'sinatra'
+require_relative './config/environment'
 require 'haml'
 require 'sass'
-require_relative './config/environment'
-require 'sinatra/activerecord'
 require_relative './models/trade'
 
 configure do
