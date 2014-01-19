@@ -2,11 +2,11 @@
 
 require 'rubygems'
 require 'sinatra'
-require 'sinatra/activerecord'
 require 'haml'
 require 'sass'
 require_relative './config/environment'
 require_relative './models/trade'
+require 'sinatra/activerecord'
 
 configure do
   set :haml, { :format => :html5 }
