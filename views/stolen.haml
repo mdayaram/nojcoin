@@ -1,4 +1,11 @@
-.stolen
-	= @trade.to
-	successfully stole the nojcoin from
-	= @trade.from
+.steal-message
+	%p Good job!
+	%p
+		You've successfully stolen the nojcoin from
+		= "#{@trade.from}!"
+	%p I hope you're happy!
+	.actions
+		.action
+			[
+			%a{ :href => "/" } Go back
+			]

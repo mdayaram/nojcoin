@@ -1,8 +1,13 @@
 .steal-message
-	So you want to steal the nojcoin, eh? I don't think
-	= @owner
-	will be very happy about that...but if you insist...
+	%p You want to what now?
+	%p
+		I don't think
+		= @owner
+		will be very happy about that...
+	%p but if you insist...
 
-%form{ :action => "/steal", :method => "post", :role => "form" }
-	%label{ :for => "stealer" } Who dares steal the nojcoin?
-	%input{ :id => "stealer", :name => "stealer", :type => "text", :placeholder => "Your twitter handle" }
+	.steal-form
+		%form{ :action => "/steal", :method => "post", :role => "form" }
+			%label{ :for => "stealer" } Who are you anyways?
+			%input{ :id => "stealer", :name => "stealer", :type => "text", :placeholder => "Your twitter handle" }
+			%input{ :type => "submit", :value => "boom!" }
