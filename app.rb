@@ -15,6 +15,16 @@ get '/' do
   haml :index
 end
 
+get '/who' do
+  @who = params[:is]
+  haml :who
+end
+
+get '/sad' do
+  @sad = params[:person]
+  haml :sad
+end
+
 get '/stolen/:id' do
   @trade = Trade.find(params[:id])
   haml :stolen
@@ -26,11 +36,6 @@ get '/steal' do
   haml :steal
 end
 
-get '/who' do
-  @who = params[:is]
-  haml :who
-end
-
 post '/steal' do
   stealer = twotter? params[:stealer]
   if stealer.nil?
@@ -38,6 +43,11 @@ post '/steal' do
   end
 
   last = Trade.order("created_at DESC").first
+
+  if stealer == last.to
+    redirect "/sad?person=#{stealer}"
+  end
+
   @trade = Trade.new
   @trade.to = stealer
   @trade.from = last.to
