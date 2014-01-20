@@ -5,7 +5,6 @@ One nojcoin to rule them all.
 
 ## Todo
 * Randomly deny steals.
-* Check if stealer exists in twitter, deny if not.
 * Don't allow person to steal their own coin.
 * Provide dashboard for current value of nojcoin + how many there are.
 * Mine action that just shows you animated gif of miner
