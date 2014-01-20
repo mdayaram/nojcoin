@@ -43,7 +43,7 @@ end
 
 helpers do
   def tweet(msg)
-    settings.twitter.update(msg) if !settings.twitter.nil?
+    settings.twitter.update(msg)# if !settings.twitter.nil?
   end
 
   def twotter?(user)
