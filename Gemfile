@@ -11,6 +11,7 @@ gem 'sinatra-redirect-with-flash'
 gem 'sass'
 gem 'haml'
 gem 'rake'
+gem 'twitter'
 
 group :development do
   gem 'sqlite3'
