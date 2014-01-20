@@ -26,6 +26,11 @@ get '/steal' do
   haml :steal
 end
 
+get '/who' do
+  @who = params[:is]
+  haml :who
+end
+
 post '/steal' do
   last = Trade.order("created_at DESC").first
   @trade = Trade.new
@@ -33,6 +38,10 @@ post '/steal' do
   @trade.from = last.to
   @trade.offer = last.offer
   @trade.notes = "burn!"
+
+  if !twotter? @trade.to
+    redirect "/who?is=#{@trade.to}"
+  end
 
   if @trade.save
     tweet "Oh no! #{@trade.to} just stole me from #{@trade.from}!"
