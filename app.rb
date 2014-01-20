@@ -32,16 +32,17 @@ get '/who' do
 end
 
 post '/steal' do
+  stealer = twotter? params[:stealer]
+  if stealer.nil?
+    redirect "/who?is=#{params[:stealer]}"
+  end
+
   last = Trade.order("created_at DESC").first
   @trade = Trade.new
-  @trade.to = params[:stealer]
+  @trade.to = stealer
   @trade.from = last.to
   @trade.offer = last.offer
   @trade.notes = "burn!"
-
-  if !twotter? @trade.to
-    redirect "/who?is=#{@trade.to}"
-  end
 
   if @trade.save
     tweet "Oh no! #{@trade.to} just stole me from #{@trade.from}!"
