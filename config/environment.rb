@@ -17,6 +17,7 @@ end
 configure :development do
   set :database, 'sqlite:///db/dev.sqlite3'
   set :show_exceptions, true
+  set :twitter, nil
 end
 
 configure :production do
@@ -31,16 +32,31 @@ configure :production do
     :encoding => 'utf8'
   )
 
-  @client = Twitter::REST::Client.new do |config|
+  twitter_client = Twitter::REST::Client.new do |config|
     config.consumer_key = ENV["TWITTER_CONSUMER_KEY"]
     config.consumer_secret = ENV["TWITTER_CONSUMER_SECRET"]
     config.access_token = ENV["TWITTER_ACCESS_TOKEN"]
     config.access_token_secret = ENV["TWITTER_ACCESS_SECRET"]
   end
+  set :twitter, twitter_client
 end
 
 helpers do
   def tweet(msg)
-    @client.update(msg) if !@client.nil?
+    settings.twitter.update(msg) if !settings.twitter.nil?
+  end
+
+  def twotter?(user)
+    if !user.start_with? "@"
+      user = "@" + user
+    end
+
+    return user if settings.twitter.nil?
+
+    if settings.twitter.user?(user[1..-1])
+      return user
+    else
+      return nil
+    end
   end
 end
