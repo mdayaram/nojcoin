@@ -35,8 +35,8 @@ post '/steal' do
   @trade.notes = "burn!"
 
   if @trade.save
-    redirect "/stolen/#{@trade.id}"
     tweet "Oh no! #{@trade.to} just stole me from #{@trade.from}!"
+    redirect "/stolen/#{@trade.id}"
   else
     haml :steal
   end
