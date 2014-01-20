@@ -15,6 +15,10 @@ get '/' do
   haml :index
 end
 
+get '/about' do
+  haml :about
+end
+
 get '/who' do
   @who = params[:is]
   haml :who

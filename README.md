@@ -4,7 +4,6 @@ nojcoin
 One nojcoin to rule them all.
 
 ## Todo
-* About page explaining what the hell this is.
 * Randomly deny steals.
 * Provide dashboard for several stats.
 	* Counter of number of steals (unique and total)
