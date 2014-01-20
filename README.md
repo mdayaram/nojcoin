@@ -1,13 +1,13 @@
 Nojcoin
 =======
 
-<sub><sup>Created by [noj](http://www.noj.cc), with major contributions and
+Created by [noj](http://www.noj.cc), with major contributions and
 ideas from [Sean Jezewski](https://twitter.com/sjezewski), [Mateusz
 Byczkowski](https://twitter.com/matahwoosh), [Hampton
 Catlin](http://www.hamptoncatlin.com/), [Michael
 Catlin](http://www.mjlcatlin.com/), Amit Joshi, Chris Neale, [J-kai Hsu](https://twitter.com/jkaih), [Tatyana Brown](http://www.tatyanabrown.com/),
 [Stephanie Quan](https://twitter.com/skinnybones), and [Trisha
-Quan](https://twitter.com/Trisha).</sup></sub>
+Quan](https://twitter.com/Trisha).
 
 One nojcoin to rule them all.
 
