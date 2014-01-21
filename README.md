@@ -31,3 +31,20 @@ One nojcoin to rule them all.
 	* Highest bid (or chosen by owner) wins, coin trades hands
 * Need a proper ledger for the nojcoin (centralized since there's only one)
 	* Or maybe explain how this site functions as the ledger.
+
+## Troubles
+* Twitter doesn't like nojcoin, they blocked the account.
+* Perhaps will have to change the paradigm, have users log in to their twitter and have them tweet on their account with a hashtag?
+* After tweeting as them, nojcoin account can retweet those tweets to maintain an uptodate timeline.
+### Your account has been suspended
+This account, @nojcoin, was suspended for sending multiple unsolicited mentions to other users.
+
+The mention and @reply features are intended to make communication between people on Twitter easier, and posting messages to several users in an unsolicited or egregious manner is considered an abuse of its use. Plus, it bothers other users! For more information about these features and proper use, [please visit our @Replies and Mentions help page](https://support.twitter.com/articles/14023).
+
+You will need to change your behavior to continue using Twitter. Repeat violations of the [Twitter Rules](https://twitter.com/rules) may result in the permanent suspension of your account.
+
+To continue using this account, please confirm below:
+
+I confirm that I will discontinue abuse of the mention or reply feature, as well as any other behaviors that are prohibited by the [Twitter Rules](https://twitter.com/rules).
+I understand that my account may be permanently suspended if I continue using Twitter in a way that violates the [Twitter Rules](https://twitter.com/rules).
+
