@@ -36,6 +36,7 @@ One nojcoin to rule them all.
 * Twitter doesn't like nojcoin, they blocked the account.
 * Perhaps will have to change the paradigm, have users log in to their twitter and have them tweet on their account with a hashtag?
 * After tweeting as them, nojcoin account can retweet those tweets to maintain an uptodate timeline.
+
 ### Your account has been suspended
 This account, @nojcoin, was suspended for sending multiple unsolicited mentions to other users.
 
