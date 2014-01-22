@@ -12,6 +12,7 @@ Quan](https://twitter.com/Trisha).
 One nojcoin to rule them all.
 
 ## Todos
+* Image, stick figure with head of twitter icon of current holder -- them holding the coin
 * Randomly deny steals.
 * Provide an option to steal from yourself, but tweet something shaming.
 * Provide different narratives that are randomly chosen for successful and failed steals.
