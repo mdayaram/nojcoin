@@ -13,18 +13,45 @@ One nojcoin to rule them all.
 
 ## Todos
 * Image, stick figure with head of twitter icon of current holder -- them holding the coin
-* Randomly deny steals.
+* Implement coin properties described below.
+* Randomly deny steals based on stealibility.
 * Provide an option to steal from yourself, but tweet something shaming.
 * Provide different narratives that are randomly chosen for successful and failed steals.
 * Provide dashboard for several stats.
 	* Counter of number of steals (unique and total)
 	* Counter for number of trades (unique and total)
-	* Current value of nojcoin (based on last trade)
+	* Current value of nojcoin
 	* Counter on how many nojcoins are out there (only one)
 * Mine action that just shows you animated gif of miner
-* Trade action where you can provide a value for the coin.
-* Rate limit stealing/trading, once a day per twitter handle.
+* Rate limit trading somehow (after introducing trading...).
 * Need a favicon, avatar for twitter account, and maybe a coin image?
+
+## Properties of the NojCoin
+
+The nojcoin has a couple of properties which change every time an action is performed on it.  The two properties of interested are its **stealability** and **value**.
+
+**value**:  The coin should have a value associated to it that fluctuates with both time, steals, trades, and scarcity. These events can be loosely associated with a supply and demand economic model that can then be used to calculate the coins value.
+**stealability**:  This is how easy/difficult it is to steal the coin.  This property is measured as a probability that a steal action will succeed at any given point in time.  This will be calculated by the volatility of the coin itself.  If the coin is transferring hands fairly often (that is, it is being stolen or traded frequently), then stealing it should be more probable.  If the coin has not transfered hands as frequently, then stealing it is less likely.
+
+Here is a proposed property system that will hopefully keep the economies surrounding nojcoin to be sound.
+
+Properties of the nojcoin
+* If someone attempts to steal a nojcoin and fails.
+** It means demand is high.
+** Value increases 1x
+** Stealability increases 1x 
+* If someone attempts to steal a nojcoin and succeeds.
+** It means demand is high and coin has exchanged hands.
+** Value decreases 2x
+** Stealability increases 2x
+* If a trade successfully completes of the nojcoin.
+** Can't determine economic state.
+** Value is taken from the trade.
+** Stealability increases 2x
+* If a day goes by with no activity
+** Value increases 10x
+** Stealibility decreases 10x
+
 
 ## Ideaspace
 * Person holds coin for 24 hours
