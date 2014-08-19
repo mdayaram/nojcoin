@@ -39,19 +39,20 @@ Here is a proposed property system that will hopefully keep the economies surrou
 Properties of the nojcoin
 
 * If someone attempts to steal a nojcoin and fails.
-	* It means demand is high.
+	* Demand is high.
 	* Value increases 1x
 	* Stealability increases 1x 
 * If someone attempts to steal a nojcoin and succeeds.
-	* It means demand is high and coin has exchanged hands.
-	* Value decreases 2x
+	* Demand is high and coin has exchanged hands.
+	* Value increases 2x
 	* Stealability increases 2x
 * If a trade successfully completes of the nojcoin.
-	* Can't determine economic state.
+	* Can't determine economic state, but the coin exchanged hands.
 	* Value is taken from the trade.
 	* Stealability increases 2x
 * If a day goes by with no activity
-	* Value increases 10x
+	* Demand is low but the coin has not exchanged hands.
+	* Value decreases 1x
 	* Stealibility decreases 10x
 
 
