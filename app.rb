@@ -34,6 +34,14 @@ get '/stolen/:id' do
   haml :stolen
 end
 
+get '/mine' do
+  @trade = Trade.order("created_at DESC").first
+  @trade.offer ||= 0
+  @trade.offer = @trade.offer.to_i + 1
+  @trade.save!
+  haml :mine
+end
+
 get '/steal' do
   trade = Trade.order("created_at DESC").first
   @owner = trade.to

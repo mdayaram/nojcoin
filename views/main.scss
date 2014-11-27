@@ -21,6 +21,14 @@ h1 {
   text-align: center;
 }
 
+.small {
+  font-family: Georgia, Serif;
+  font-size: 30px;
+  margin: 15% 10% 0 10%;
+  text-align: left;
+  width: 70%;
+}
+
 .twitter-fail {
   font-family: Georgia, Serif;
   font-size: 24;
@@ -51,6 +59,7 @@ h1 {
 .action {
   font-family: Helvetica, San-serif;
   font-size: 20px;
+  display: inline-block;
 }
 
 .feed {
