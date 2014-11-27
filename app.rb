@@ -69,7 +69,7 @@ post '/steal' do
   end
 
   break_factor = ((Time.now - @trade.created_at) / 60 ) + 1
-  break_factor = Random.rand(@trade.offer.to_f) if break_factor > @trade.offer.to_f
+  break_factor = Random.rand(@trade.offer.to_f.abs + 1) if break_factor > @trade.offer.to_f
   newtrade = Trade.new
   newtrade.to = stealer
   newtrade.from = @trade.to
@@ -91,20 +91,20 @@ end
 
 post '/mock' do
   trade = Trade.find(params[:id])
-  message = "Hey, #{trade.from}! "
+  message_header = "Hey, #{trade.from}! "
   if params[:msg].nil? || params[:msg].empty?
-    message += "Neener-neener-neener!"
+    message_body = "Neener-neener-neener!"
   else
-    message += params[:msg][0..(139 - message.length)]
+    message_body = params[:msg][0..(139 - message_header.length)]
   end
 
   integrity_factor = 10 # magic numbers!
   trade.offer = trade.offer.to_f -  integrity_factor * Random.rand
   trade.offer = 0 if trade.offer.to_f < 0
-  trade.notes = message
+  trade.notes = message_body
 
   trade.save!
-  tweet message
+  tweet "#{message_header}#{message_body}"
   redirect "/mocked/#{params[:id]}"
 end
 
