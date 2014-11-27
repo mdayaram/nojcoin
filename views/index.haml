@@ -1,15 +1,6 @@
-.snippet
-	%p
-		%a{ :href => "/about" } What is this?
-	%p
-		%a{ :href => "/market" }
-			= "Price Index: $#{'%.2f' % @value}"
-	%p
-		%a{ :href => "/ledger" } Ledger
-
 .owner
 	The nojcoin is currently being held by
-	= "<a href='https://twitter.com/#{@owner}'>#{@owner}</a>"
+	= "<a href='https://twitter.com/#{@trade.to}'>#{@trade.to}</a>"
 .actions
 	.action
 		[

@@ -9,29 +9,30 @@ get '/styles/:file.css' do
 end
 
 get '/' do
-  trade = Trade.order("created_at DESC").first
-  @owner = trade.to
-  @value = trade.offer.to_f
-  @notes = trade.notes
+  @trade = Trade.order("created_at DESC").first
   haml :index
 end
 
 get '/about' do
+  @trade = Trade.order("created_at DESC").first
   haml :about
 end
 
 get '/who' do
+  @trade = Trade.order("created_at DESC").first
   @who = params[:is]
   haml :who
 end
 
 get '/sad' do
+  @trade = Trade.order("created_at DESC").first
   @sad = params[:person]
   haml :sad
 end
 
 get '/stolen/:id' do
-  @trade = Trade.find(params[:id])
+  @trade = Trade.order("created_at DESC").first
+  @mytrade = Trade.find(params[:id])
   haml :stolen
 end
 
@@ -46,12 +47,12 @@ get '/mine' do
 end
 
 get '/market' do
+  @trade = Trade.order("created_at DESC").first
   haml :market
 end
 
 get '/steal' do
-  trade = Trade.order("created_at DESC").first
-  @owner = trade.to
+  @trade = Trade.order("created_at DESC").first
   haml :steal
 end
 
@@ -61,22 +62,23 @@ post '/steal' do
     redirect "/who?is=#{params[:stealer]}"
   end
 
-  last = Trade.order("created_at DESC").first
+  @trade = Trade.order("created_at DESC").first
 
-  if stealer == last.to
+  if stealer == @trade.to
     redirect "/sad?person=#{stealer}"
   end
 
-  breaking_factor = ((Time.now - last.created_at) / 60 / 60) + 1
-  @trade = Trade.new
-  @trade.to = stealer
-  @trade.from = last.to
-  @trade.offer = last.offer.to_f -  breaking_factor * Random.rand
-  @trade.offer = 0 if @trade.offer < 0
-  @trade.notes = "burn!"
+  break_factor = ((Time.now - @trade.created_at) / 60 ) + 1
+  break_factor = Random.rand(@trade.offer.to_f) if break_factor > @trade.offer.to_f
+  newtrade = Trade.new
+  newtrade.to = stealer
+  newtrade.from = @trade.to
+  newtrade.offer = @trade.offer.to_f -  break_factor * Random.rand
+  newtrade.offer = 0 if newtrade.offer < 0
+  newtrade.notes = "burn!"
 
-  if @trade.save
-    redirect "/stolen/#{@trade.id}"
+  if newtrade.save
+    redirect "/stolen/#{newtrade.id}"
   else
     haml :steal
   end
@@ -96,8 +98,9 @@ post '/mock' do
     message += params[:msg][0..(139 - message.length)]
   end
 
-  integrity_factor = ((Time.now - last.created_at) / 60 / 60 / 24) + 1
+  integrity_factor = 10 # magic numbers!
   trade.offer = trade.offer.to_f -  integrity_factor * Random.rand
+  trade.offer = 0 if trade.offer.to_f < 0
   trade.notes = message
 
   trade.save!
@@ -106,11 +109,13 @@ post '/mock' do
 end
 
 get '/mocked/:id' do
+  @trade = Trade.order("created_at DESC").first
   haml :mocked
 end
 
 get '/ledger' do
   @trades = Trade.order("created_at DESC")
+  @trade = @trades.last
   haml :ledger
 end
 
