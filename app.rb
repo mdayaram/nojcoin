@@ -104,6 +104,12 @@ get '/mocked/:id' do
   haml :mocked
 end
 
+get '/ledger' do
+  @trades = Trade.order("created_at DESC")
+  haml :ledger
+end
+
+# I am ashamed of this, actually, pretty much all of this.
 get '/market-chart.js' do
   headers('Content-Type' => "application/javascript")
   trades = Trade.order("created_at ASC")

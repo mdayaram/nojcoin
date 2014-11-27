@@ -79,3 +79,13 @@ a:active { color: #000; }
 .owner a:visited { text-decoration: none; color: #0084B4; }
 .owner a:hover { text-decoration: none; color: #0084B4; }
 .owner a:active { text-decoration: none; color: #0084B4; }
+
+table, tr, th, td {
+  font-family: Helvetica, Verdana, san-serif;
+  font-size: 14px;
+  padding: 0px 10px 0px 10px;
+}
+
+tr.one {
+  background: rgba(25, 25, 25, .1);
+}
