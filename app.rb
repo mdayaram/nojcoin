@@ -94,6 +94,8 @@ post '/mock' do
   else
     message += params[:msg][0..(139 - message.length)]
   end
+  trade.notes = message
+  trade.save!
   tweet message
   redirect "/mocked/#{params[:id]}"
 end
