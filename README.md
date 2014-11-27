@@ -12,6 +12,9 @@ Quan](https://twitter.com/Trisha).
 One nojcoin to rule them all.
 
 ## Todos
+* The code is pretty disgusting.  I'm not going to fix it because I'm lazy.
+	However, if anyone had a PR where they cleaned up my CSS and JS and organized
+	my HAML and sinatra code, well, I think I would be eternally greatful.
 * Image, stick figure with head of twitter icon of current holder -- them holding the coin
 * Implement coin properties described below.
 * Randomly deny steals based on stealibility.
