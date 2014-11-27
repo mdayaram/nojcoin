@@ -67,10 +67,11 @@ post '/steal' do
     redirect "/sad?person=#{stealer}"
   end
 
+  breaking_factor = ((Time.now - last.created_at) / 60 / 60) + 1
   @trade = Trade.new
   @trade.to = stealer
   @trade.from = last.to
-  @trade.offer = last.offer.to_f - 1 - Random.rand
+  @trade.offer = last.offer.to_f -  breaking_factor * Random.rand
   @trade.offer = 0 if @trade.offer < 0
   @trade.notes = "burn!"
 
@@ -94,7 +95,11 @@ post '/mock' do
   else
     message += params[:msg][0..(139 - message.length)]
   end
+
+  integrity_factor = ((Time.now - last.created_at) / 60 / 60 / 24) + 1
+  trade.offer = trade.offer.to_f -  integrity_factor * Random.rand
   trade.notes = message
+
   trade.save!
   tweet message
   redirect "/mocked/#{params[:id]}"
