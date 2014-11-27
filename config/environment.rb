@@ -39,12 +39,13 @@ configure :production do
     config.access_token_secret = ENV["TWITTER_ACCESS_SECRET"]
   end
   #set :twitter, twitter_client
-  set :twitter, nil # account got suspended for spam, stop tweeting for now until we have a solution.
+  set :twitter, nil
 end
 
 helpers do
   def tweet(msg)
     settings.twitter.update(msg) if !settings.twitter.nil?
+    puts "TWITTER MSG: #{msg}"
   end
 
   def twotter?(user)

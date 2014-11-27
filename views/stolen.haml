@@ -1,19 +1,24 @@
 .owner
 	.small
 		%p
-			After maneuvering through
-			= "#{@trade.from}'s laser security system with your "
-			cat like reflexes, you propelled yourself from the ceiling where you
-			levitated on top of the nojcoin's altar.
+			You easily break through
+			= "<a href='https://twitter.com/#{@trade.from}'>#{@trade.from}</a>'s"
+			laser security system with your cat like reflexes and find yourself
+			in their altar with ease.
 		%p
-			The beauty and majesticness of witnessing the nojcoin in person were
-			hypnotyzing...so much so that you did not notice tripping the sweat alarm!
+			The radiance of witnessing the nojcoin in person is
+			hypnotyzing...so much so that you forgot about
+			= "<a href='https://twitter.com/#{@trade.from}'>#{@trade.from}</a>'s"
+			heat sensors!
 		%p
-			In midst of red flashing lights and sirens, you quickly grab the nojcoin
+			In the midst of red flashing lights and sirens, you quickly grab the nojcoin
 			and run forth.  Though in your haste, it appears it may have suffered some
 			damage.
 .actions
 	.action
 		[
-		%a{ :href => "/" } Phew, at least that's over.
+		%a{ :href => "/" } phew, at least that's over
+		]
+		[
+		%a{ :href => "/mock/#{@trade.id}" } in your FACE!
 		]

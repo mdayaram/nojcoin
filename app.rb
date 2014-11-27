@@ -75,11 +75,31 @@ post '/steal' do
   @trade.notes = "burn!"
 
   if @trade.save
-    tweet "Oh no! #{@trade.to} just stole me from #{@trade.from}!"
     redirect "/stolen/#{@trade.id}"
   else
     haml :steal
   end
+end
+
+get '/mock/:id' do
+  @trade = Trade.find(params[:id])
+  haml :mock
+end
+
+post '/mock' do
+  trade = Trade.find(params[:id])
+  message = "Hey, #{trade.from}! "
+  if params[:msg].nil? || params[:msg].empty?
+    message += "Neener-neener-neener!"
+  else
+    message += params[:msg][0..(139 - message.length)]
+  end
+  tweet message
+  redirect "/mocked/#{params[:id]}"
+end
+
+get '/mocked/:id' do
+  haml :mocked
 end
 
 get '/market-chart.js' do

@@ -1,13 +1,14 @@
-.steal-message
-	%p You want to what now?
-	%p
-		I don't think
-		= @owner
-		will be very happy about that...
-	%p but if you insist...
+.owner
+	.small
+		%p That is very daring of you...but are you sure you're up for it?
+		%p
+			I hear
+			= "<a href='https://twitter.com/#{@owner}'>#{@owner}</a>"
+			keeps the nojcoin under pretty tight security...
+		%p but if you insist...
 
-	.steal-form
-		%form{ :action => "/steal", :method => "post", :role => "form" }
-			%label{ :for => "stealer" } Who are you anyways?
-			%input{ :id => "stealer", :name => "stealer", :type => "text", :placeholder => "@twitter" }
-			%input{ :type => "submit", :value => "boom!" }
+		.steal-form
+			%form{ :action => "/steal", :method => "post", :role => "form" }
+				%label{ :for => "stealer" } Who are you anyways?
+				%input{ :id => "stealer", :name => "stealer", :type => "text", :placeholder => "@twitter" }
+				%input{ :type => "submit", :value => "let's go!" }
