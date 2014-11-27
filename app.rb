@@ -96,6 +96,9 @@ get '/market-chart.js' do
   else
     points = values
   end
+  if points.last != values.last
+    points << values.last
+  end
   data = "var data = {\n"
   data += "labels: " + (1..points.length).to_a.to_s + ",\n"
   data += "datasets: [{\n"
