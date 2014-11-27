@@ -85,8 +85,18 @@ get '/market-chart.js' do
   trades.each do |t|
     values << t.offer.to_i
   end
+  # We only want to display a max of 12 data points (potentially 23, whatevs)
+  points = []
+  if values.length > 12
+    iteration = values.length/12
+    values.each_with_index do |v,i|
+      points << v if i % iteration == 0
+    end
+  else
+    points = values
+  end
   data = "var data = {\n"
-  data += "labels: " + (1..values.length).to_a.to_s + ",\n"
+  data += "labels: " + (1..points.length).to_a.to_s + ",\n"
   data += "datasets: [{\n"
   data += "label: \"Nojcoin Dollar Value\",\n"
   data += "fillColor: \"rgba(151,187,205,0.2)\",\n"
@@ -95,9 +105,10 @@ get '/market-chart.js' do
   data += "pointStrokeColor: \"#fff\",\n"
   data += "pointHighlightFill: \"#fff\",\n"
   data += "pointHighlightStroke: \"rgba(151,187,205,1)\",\n"
-  data += "data: #{values.to_s}\n"
+  data += "data: #{points.to_s}\n"
   data += "}]};\n\n"
+  data += "var options = { };\n"
   data += "var ctx = document.getElementById(\"marketChart\").getContext(\"2d\");\n"
-  data += "var mychart = new Chart(ctx).Line(data, {});\n"
+  data += "var mychart = new Chart(ctx).Line(data, options);\n"
   return data
 end
