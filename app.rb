@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 
+require 'enumerator'
 require_relative './config/environment'
 require_relative './models/trade'
 
@@ -88,9 +89,9 @@ get '/market-chart.js' do
   # We only want to display a max of 12 data points (potentially 23, whatevs)
   points = []
   if values.length > 12
-    iteration = values.length/12
-    values.each_with_index do |v,i|
-      points << v if i % iteration == 0
+    chunksize = values.length/12
+    values.each_slice(chunksize) do |v|
+      points << v.inject{ |sum, el| sum + el }.to_f / v.size
     end
   else
     points = values
