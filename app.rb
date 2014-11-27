@@ -38,7 +38,7 @@ end
 get '/mine' do
   @trade = Trade.order("created_at DESC").first
   @trade.offer ||= 0
-  @trade.offer = @trade.offer.to_i + 1
+  @trade.offer = @trade.offer.to_f + Random.rand
   @trade.save!
   haml :mine
 end
@@ -84,7 +84,7 @@ get '/market-chart.js' do
   trades = Trade.order("created_at ASC")
   values = []
   trades.each do |t|
-    values << t.offer.to_i
+    values << t.offer.to_f
   end
   # We only want to display a max of 12 data points (potentially 23, whatevs)
   points = []
