@@ -11,7 +11,7 @@ end
 get '/' do
   trade = Trade.order("created_at DESC").first
   @owner = trade.to
-  @value = trade.offer
+  @value = trade.offer.to_f
   @notes = trade.notes
   haml :index
 end
@@ -39,6 +39,8 @@ get '/mine' do
   @trade = Trade.order("created_at DESC").first
   @trade.offer ||= 0
   @trade.offer = @trade.offer.to_f + Random.rand
+  # in case of overflow...
+  @trade.offer = 0 if @trade.offer.to_f < 0
   @trade.save!
   haml :mine
 end
@@ -68,7 +70,8 @@ post '/steal' do
   @trade = Trade.new
   @trade.to = stealer
   @trade.from = last.to
-  @trade.offer = last.offer
+  @trade.offer = last.offer.to_f - 1 - Random.rand
+  @trade.offer = 0 if @trade.offer < 0
   @trade.notes = "burn!"
 
   if @trade.save

@@ -3,7 +3,7 @@
 		%a{ :href => "/about" } What is this?
 	%p
 		%a{ :href => "/market" }
-			= "Price Index: $#{@value.round(2)}"
+			= "Price Index: $#{'%.2f' % @value}"
 
 .owner
 	The nojcoin is currently being held by

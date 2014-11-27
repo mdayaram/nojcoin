@@ -1,11 +1,19 @@
-.steal-message
-	%p Good job!
-	%p
-		You've successfully stolen the nojcoin from
-		= "#{@trade.from}!"
-	%p I hope you're happy!
-	.actions
-		.action
-			[
-			%a{ :href => "/" } Go back
-			]
+.owner
+	.small
+		%p
+			After maneuvering through
+			= "#{@trade.from}'s laser security system with your "
+			cat like reflexes, you propelled yourself from the ceiling where you
+			levitated on top of the nojcoin's altar.
+		%p
+			The beauty and majesticness of witnessing the nojcoin in person were
+			hypnotyzing...so much so that you did not notice tripping the sweat alarm!
+		%p
+			In midst of red flashing lights and sirens, you quickly grab the nojcoin
+			and run forth.  Though in your haste, it appears it may have suffered some
+			damage.
+.actions
+	.action
+		[
+		%a{ :href => "/" } Phew, at least that's over.
+		]
