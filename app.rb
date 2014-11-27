@@ -42,6 +42,10 @@ get '/mine' do
   haml :mine
 end
 
+get '/market' do
+  haml :market
+end
+
 get '/steal' do
   trade = Trade.order("created_at DESC").first
   @owner = trade.to
@@ -72,4 +76,28 @@ post '/steal' do
   else
     haml :steal
   end
+end
+
+get '/market-chart.js' do
+  headers('Content-Type' => "application/javascript")
+  trades = Trade.order("created_at ASC")
+  values = []
+  trades.each do |t|
+    values << t.offer.to_i
+  end
+  data = "var data = {\n"
+  data += "labels: " + (1..values.length).to_a.to_s + ",\n"
+  data += "datasets: [{\n"
+  data += "label: \"Nojcoin Dollar Value\",\n"
+  data += "fillColor: \"rgba(151,187,205,0.2)\",\n"
+  data += "strokeColor: \"rgba(151,187,205,1)\",\n"
+  data += "pointColor: \"rgba(151,187,205,1)\",\n"
+  data += "pointStrokeColor: \"#fff\",\n"
+  data += "pointHighlightFill: \"#fff\",\n"
+  data += "pointHighlightStroke: \"rgba(151,187,205,1)\",\n"
+  data += "data: #{values.to_s}\n"
+  data += "}]};\n\n"
+  data += "var ctx = document.getElementById(\"marketChart\").getContext(\"2d\");\n"
+  data += "var mychart = new Chart(ctx).Line(data, {});\n"
+  return data
 end

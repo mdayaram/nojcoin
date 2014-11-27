@@ -1,5 +1,9 @@
 .snippet
-	%a{ :href => "/about" } What is this?
+	%p
+		%a{ :href => "/about" } What is this?
+	%p
+		%a{ :href => "/market" }
+			= "Nojcoin Market Value: $#{@value}.00"
 
 .owner
 	The nojcoin is currently being held by
