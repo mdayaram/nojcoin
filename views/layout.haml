@@ -7,18 +7,20 @@
 		%link{:href=>'/styles/main.css', :media => "screen", :rel => 'stylesheet', :type => "text/css"}
 	%body
 		.all-the-things
+			%nav
+				%ul
+					%li
+						%a{ :href => "/about" } What is this?
+					%li
+						%a{ :href => "/market" }
+							= "Price Index: $#{'%.2f' % @trade.offer.to_f}"
+					%li
+						%a{ :href => "/ledger" } Ledger
+
 			.content
 				= yield
 
-			.nav
-				.snippet
-					%p
-						%a{ :href => "/about" } What is this?
-					%p
-						%a{ :href => "/market" }
-							= "Price Index: $#{'%.2f' % @trade.offer.to_f}"
-					%p
-						%a{ :href => "/ledger" } Ledger
+			%footer
 				.feed
 					<a class="twitter-timeline" data-dnt="true" href="https://twitter.com/nojcoin" data-widget-id="425098218657955840">Tweets by @nojcoin</a>
 					<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
