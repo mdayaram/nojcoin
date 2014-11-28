@@ -1,27 +1,26 @@
 .owner
-	.small
-		%p Behold, the history and source of truth of nojcoin transactions.
+	%p Behold, the history and source of truth of nojcoin transactions.
 
-		%table
-			%tr
-				%th Date
-				%th From
-				%th To
-				%th Notes
-				%th Value
-			- @trades.each_with_index do |t, i|
-				- color = (i % 2 == 0) ? "one" : "two"
-				%tr{ :class => "#{color}"}
-					%td{ :width => "180px", :align => "left" }
-						= t.created_at
-					%td{ :align => "center" }
-						= "<a href='https://twitter.com/#{t.from}'>#{t.from}</a>"
-					%td{ :align => "center" }
-						= "<a href='https://twitter.com/#{t.to}'>#{t.to}</a>"
-					%td{ :align => "left" }
-						= t.notes
-					%td{ :align => "right" }
-						= '$%2.f' % t.offer.to_f
+	%table
+		%tr
+			%th Date
+			%th From
+			%th To
+			%th Notes
+			%th Value
+		- @trades.each_with_index do |t, i|
+			- color = (i % 2 == 0) ? "one" : "two"
+			%tr{ :class => "#{color}"}
+				%td{ :width => "180px", :align => "left" }
+					= t.created_at
+				%td{ :align => "center" }
+					= "<a href='https://twitter.com/#{t.from}'>#{t.from}</a>"
+				%td{ :align => "center" }
+					= "<a href='https://twitter.com/#{t.to}'>#{t.to}</a>"
+				%td{ :align => "left" }
+					= t.notes
+				%td{ :align => "right" }
+					= '$%2.f' % t.offer.to_f
 
 .actions
 	.action

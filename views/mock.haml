@@ -1,18 +1,17 @@
 .owner
-	.small
-		%p
-			You want to what now?
-		%p
-			Probably not the best idea to mock someone right after stealing
-			from them...just saying...
+	%p
+		You want to what now?
+	%p
+		Probably not the best idea to mock someone right after stealing
+		from them...just saying...
 
-		.steal-form
-			%form{ :action => "/mock", :method => "post", :role => "form" }
-				%label{ :for => "msg" }
-					= "Hey, <a href='https://twitter.com/#{@trade.from}'>#{@trade.from}</a>! "
-				%input{ :id => "msg", :name => "msg", :type => "text", :size => "130", :placeholder => "Neener-neener-neener!"}
-				%input{ :id => "id", :name => "id", :type => "hidden", :value => "#{@trade.id}" }
-				%input{ :type => "submit", :value => "I do what I want!"}
+	.steal-form
+		%form{ :action => "/mock", :method => "post", :role => "form" }
+			%label{ :for => "msg" }
+				= "Hey, <a href='https://twitter.com/#{@trade.from}'>#{@trade.from}</a>! "
+			%input{ :id => "msg", :name => "msg", :type => "text", :size => "130", :placeholder => "Neener-neener-neener!"}
+			%input{ :id => "id", :name => "id", :type => "hidden", :value => "#{@trade.id}" }
+			%input{ :type => "submit", :value => "I do what I want!"}
 
 
 .actions
