@@ -1,3 +1,7 @@
+html, body {
+  height: 100%;
+}
+
 h1 {
   font-family: Helvetica, San-serif;
   text-align: center;
@@ -6,12 +10,11 @@ h1 {
 .all-the-things {
   width: 100%;
   height: 100%;
-  display: inline-block;
 }
 
 .nav {
   width: 15%;
-  margin-right: 50px;
+  margin-left: 50px;
   float: left;
 }
 
@@ -20,16 +23,16 @@ h1 {
 }
 
 .feed {
-  min-height: 100%;
   height: 100%;
   width: 200px;
 }
 
 .content {
-  vertical-align: center;
   float: left;
   width: 80%;
+  height: 100%;
   text-align: center;
+  display: inline-table;
 }
 
 .owner {
@@ -38,7 +41,6 @@ h1 {
   font-family: Georgia, Serif;
   font-size: 72px;
   text-align: left;
-  display: inline-block;
   p {
     font-size: 30px;
   }
