@@ -115,7 +115,7 @@ end
 
 get '/ledger' do
   @trades = Trade.order("created_at DESC")
-  @trade = @trades.last
+  @trade = @trades.first
   haml :ledger
 end
 
