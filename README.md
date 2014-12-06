@@ -12,6 +12,7 @@ Quan](https://twitter.com/Trisha).
 One nojcoin to rule them all.
 
 ## Todos
+* Option to buy coin (in exchange for a poem?)
 * The code is pretty disgusting.  I'm not going to fix it because I'm lazy.
 	However, if anyone had a PR where they cleaned up my CSS and JS and organized
 	my HAML and sinatra code, well, I think I would be eternally greatful.
