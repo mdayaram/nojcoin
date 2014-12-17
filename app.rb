@@ -38,8 +38,12 @@ end
 get '/mine' do
   @trade.offer ||= 0
   @trade.offer = @trade.offer.to_f + Random.rand
-  # in case of overflow...
+
+  # According to google, 85 trillion is the world GDP, so nojcoin cannot be
+  # worth more than that.
+  @trade.offer = 85000000000000.00 if @trade.offer_to_f > 85000000000000.00
   @trade.offer = 0 if @trade.offer.to_f < 0
+
   @trade.save!
   haml :mine
 end
