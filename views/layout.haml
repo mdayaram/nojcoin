@@ -13,7 +13,7 @@
 						%a{ :href => "/about" } What is this?
 					%li
 						%a{ :href => "/market" }
-							= "Price Index: $#{'%.2f' % @trade.offer.to_f}"
+							= "Price Index: #{currency(@trade.offer.to_f)}"
 					%li
 						%a{ :href => "/ledger" } Ledger
 

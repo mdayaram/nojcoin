@@ -4,6 +4,7 @@ Bundler.setup
 require 'sinatra'
 require 'active_record'
 require 'sinatra/activerecord'
+require 'sinatra/support/numeric'
 require 'haml'
 require 'sass'
 require 'twitter'
@@ -12,6 +13,8 @@ configure do
   set :server, 'webrick' # needed because sinatra thinks the twitter gem is a server.
   set :app_file, File.expand_path(File.join(File.dirname(__FILE__), "..", "app.rb"))
   set :haml, { :format => :html5 }
+
+  register Sinatra::Numeric
 end
 
 configure :development do
