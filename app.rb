@@ -112,7 +112,7 @@ end
 
 get '/ledger' do
   @trades = Trade.order("created_at DESC")
-  haml :ledger
+  haml :ledger, :locals => { :feed_display => "none" }
 end
 
 # I am ashamed of this, actually, pretty much all of this.
