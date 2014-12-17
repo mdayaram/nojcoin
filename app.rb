@@ -114,24 +114,14 @@ end
 # I am ashamed of this, actually, pretty much all of this.
 get '/market-chart.js' do
   headers('Content-Type' => "application/javascript")
-  trades = Trade.order("created_at ASC")
-  values = []
-  trades.each do |t|
-    values << t.offer.to_f
-  end
-  # We only want to display a max of 12 data points (potentially 23, whatevs)
+  trades = Trade.order("created_at DESC limit 12")
   points = []
-  if values.length > 12
-    chunksize = values.length/12
-    values.each_slice(chunksize) do |v|
-      points << v.inject{ |sum, el| sum + el }.to_f / v.size
-    end
-  else
-    points = values
+  trades.each do |t|
+    points << t.offer.to_f
   end
-  if points.last != values.last
-    points << values.last
-  end
+  # Only display the last 12 trade points.
+  points.reverse!
+
   data = "var data = {\n"
   data += "labels: " + (1..points.length).to_a.to_s + ",\n"
   data += "datasets: [{\n"
