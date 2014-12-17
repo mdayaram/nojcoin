@@ -20,7 +20,7 @@
 				%td{ :align => "left" }
 					= t.notes
 				%td{ :align => "right" }
-					= '$%2.f' % t.offer.to_f
+					= currency(t.offer.to_f)
 
 .actions
 	.action
