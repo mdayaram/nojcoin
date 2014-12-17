@@ -4,40 +4,38 @@ require 'enumerator'
 require_relative './config/environment'
 require_relative './models/trade'
 
+before do
+  @trade = Trade.order("created_at DESC").first
+end
+
 get '/styles/:file.css' do
   scss params[:file].to_sym
 end
 
 get '/' do
-  @trade = Trade.order("created_at DESC").first
   haml :index
 end
 
 get '/about' do
-  @trade = Trade.order("created_at DESC").first
   haml :about
 end
 
 get '/who' do
-  @trade = Trade.order("created_at DESC").first
   @who = params[:is]
   haml :who
 end
 
 get '/sad' do
-  @trade = Trade.order("created_at DESC").first
   @sad = params[:person]
   haml :sad
 end
 
 get '/stolen/:id' do
-  @trade = Trade.order("created_at DESC").first
   @mytrade = Trade.find(params[:id])
   haml :stolen
 end
 
 get '/mine' do
-  @trade = Trade.order("created_at DESC").first
   @trade.offer ||= 0
   @trade.offer = @trade.offer.to_f + Random.rand
   # in case of overflow...
@@ -47,12 +45,10 @@ get '/mine' do
 end
 
 get '/market' do
-  @trade = Trade.order("created_at DESC").first
   haml :market
 end
 
 get '/steal' do
-  @trade = Trade.order("created_at DESC").first
   haml :steal
 end
 
@@ -61,8 +57,6 @@ post '/steal' do
   if stealer.nil?
     redirect "/who?is=#{params[:stealer]}"
   end
-
-  @trade = Trade.order("created_at DESC").first
 
   if stealer == @trade.to
     redirect "/sad?person=#{stealer}"
@@ -109,13 +103,11 @@ post '/mock' do
 end
 
 get '/mocked/:id' do
-  @trade = Trade.order("created_at DESC").first
   haml :mocked
 end
 
 get '/ledger' do
   @trades = Trade.order("created_at DESC")
-  @trade = @trades.first
   haml :ledger
 end
 
