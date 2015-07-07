@@ -115,6 +115,10 @@ get '/ledger' do
   haml :ledger, :locals => { :feed_display => "none" }
 end
 
+get '/port' do
+  return "#{ENV["PORT"]}"
+end
+
 # I am ashamed of this, actually, pretty much all of this.
 get '/market-chart.js' do
   headers('Content-Type' => "application/javascript")
