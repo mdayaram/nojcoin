@@ -2,6 +2,7 @@ require 'rubygems'
 require 'bundler'
 Bundler.setup
 require 'sinatra'
+require 'sinatra/base'
 require 'active_record'
 require 'sinatra/activerecord'
 require 'sinatra/support/numeric'
