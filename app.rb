@@ -72,7 +72,7 @@ post '/steal' do
   newtrade.to = stealer
   newtrade.from = @trade.to
   newtrade.offer = @trade.offer.to_f -  break_factor * Random.rand
-  newtrade.offer = 0 if newtrade.offer < 0
+  newtrade.offer = 0 if newtrade.offer.to_f < 0
   newtrade.notes = "burn!"
 
   if newtrade.save
