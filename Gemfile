@@ -12,6 +12,7 @@ gem 'sass'
 gem 'haml'
 gem 'rake'
 gem 'twitter'
+gem 'webrick'
 
 group :development do
   gem 'sqlite3'

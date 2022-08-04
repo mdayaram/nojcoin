@@ -122,7 +122,7 @@ end
 # I am ashamed of this, actually, pretty much all of this.
 get '/market-chart.js' do
   headers('Content-Type' => "application/javascript")
-  trades = Trade.order("created_at DESC limit 12")
+  trades = Trade.order(created_at: :desc).limit(12)
   points = []
   trades.each do |t|
     points << t.offer.to_f
